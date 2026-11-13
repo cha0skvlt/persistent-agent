@@ -1,0 +1,19 @@
+[Unit]
+Description=persistent-agent API + Telegram
+Documentation=file://@REPO_ROOT@/ARCHITECTURE.md
+After=network-online.target postgresql.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=@REPO_ROOT@
+Environment=PYTHONPATH=@REPO_ROOT@
+Environment=PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+ExecStart=@VENV_PYTHON@ -c "import uvicorn; from src.config import settings; uvicorn.run('src.api.app:app', host=settings.api_host, port=settings.api_port)"
+Restart=always
+RestartSec=15
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

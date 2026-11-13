@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+    "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  FastAPI + Telegram daemon for persistent-agent (ARCH-daemon).
+  Install: bash scripts/install-api.sh
+  Remove:  bash scripts/uninstall-api.sh
+  Logs:    ~/Library/Logs/agent-api.log
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>cha0skvlt.persistent-agent.api</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <!-- Absolute path only — expanded by install-api.sh (e.g. /path/to/repo/venv/bin/python3). -->
+        <string>AGENT_VENV_PYTHON</string>
+        <string>-c</string>
+        <string>import uvicorn; from src.config import settings; uvicorn.run('src.api.app:app', host=settings.api_host, port=settings.api_port)</string>
+    </array>
+
+    <!-- Restart automatically if api exits for any reason. -->
+    <key>KeepAlive</key>
+    <true/>
+
+    <!-- Start immediately when launchd loads the plist. -->
+    <key>RunAtLoad</key>
+    <true/>
+
+    <!-- Boot race: Postgres/Ollama may lag launchd — retry instead of giving up. -->
+    <key>ThrottleInterval</key>
+    <integer>15</integer>
+
+    <!-- Working directory = repo root so relative .env path resolves. -->
+    <key>WorkingDirectory</key>
+    <string>AGENT_REPO_ROOT</string>
+
+    <key>StandardOutPath</key>
+    <string>AGENT_LOG_PATH</string>
+
+    <key>StandardErrorPath</key>
+    <string>AGENT_LOG_PATH</string>
+
+    <!-- Minimal environment; install-api.sh expands the placeholders. -->
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+        <key>PYTHONPATH</key>
+        <string>AGENT_REPO_ROOT</string>
+    </dict>
+</dict>
+</plist>

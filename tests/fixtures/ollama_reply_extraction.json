@@ -1,0 +1,52 @@
+{
+  "empty_content_reasoning_visible": {
+    "content": "",
+    "additional_kwargs": {
+      "reasoning_content": "planning steps here</think>\n\nFinal answer from reasoning field."
+    },
+    "expected_visible": "Final answer from reasoning field.",
+    "expected_reason": "empty_content"
+  },
+  "empty_content_short_content": {
+    "content": "ok",
+    "additional_kwargs": {
+      "reasoning_content": "long internal monologue</think>\n\nRecovered prose."
+    },
+    "expected_visible": "Recovered prose.",
+    "expected_reason": "empty_content"
+  },
+  "native_reasoning_empty_content": {
+    "content": "",
+    "additional_kwargs": {
+      "reasoning_content": "Thinking Process:\n\n1. Analyze the request.\n2. Do the math."
+    },
+    "expected_visible": "",
+    "expected_reason": null
+  },
+  "native_reasoning_short_content": {
+    "content": "51",
+    "additional_kwargs": {
+      "reasoning_content": "Thinking Process:\n\n17*3 = 51. Answer briefly."
+    },
+    "expected_visible": "51",
+    "expected_reason": null
+  },
+  "orphan_close_tag_start": {
+    "content": "</think>\n\nVisible after orphan close.",
+    "additional_kwargs": {},
+    "expected_visible": "Visible after orphan close.",
+    "expected_reason": "orphan_close_tag"
+  },
+  "inline_thinking_blocks_consecutive": {
+    "content": "Intro <think>first plan</think> middle <think>second plan</think> tail answer.",
+    "additional_kwargs": {},
+    "expected_visible": "Intro  middle  tail answer.",
+    "expected_reason": null
+  },
+  "empty_after_extraction": {
+    "content": "<think>only thinking</think>",
+    "additional_kwargs": {},
+    "expected_visible": "",
+    "expected_reason": "empty_after_extraction"
+  }
+}

@@ -1,0 +1,22 @@
+* text=auto eol=lf
+
+*.py    text diff=python
+*.md    text
+*.yml   text
+*.yaml  text
+*.toml  text
+*.json  text
+*.jsonl text
+*.sql   text
+*.sh    text eol=lf
+*.plist text
+
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.webp  binary
+*.ico   binary
+*.pdf   binary
+*.zip   binary
+*.dump  binary

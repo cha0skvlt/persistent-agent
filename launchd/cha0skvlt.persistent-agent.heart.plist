@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+    "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Heart daemon for persistent-agent.
+  Install: bash scripts/install-heart.sh
+  Remove:  bash scripts/uninstall-heart.sh
+  Logs:    ~/Library/Logs/agent-heart.log
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>cha0skvlt.persistent-agent.heart</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <!-- Absolute path only — expanded by install-heart.sh (e.g. /path/to/repo/venv/bin/python3). -->
+        <string>AGENT_VENV_PYTHON</string>
+        <string>-m</string>
+        <string>src.heart.heartbeat</string>
+    </array>
+
+    <!-- Restart automatically if heart exits for any reason. -->
+    <key>KeepAlive</key>
+    <true/>
+
+    <!-- Start immediately when launchd loads the plist. -->
+    <key>RunAtLoad</key>
+    <true/>
+
+    <!-- Rapid-crash brake: wait at least 30s between restarts (matches heart_interval_sec). -->
+    <key>ThrottleInterval</key>
+    <integer>30</integer>
+
+    <!-- Working directory = repo root so relative .env path resolves. -->
+    <key>WorkingDirectory</key>
+    <string>AGENT_REPO_ROOT</string>
+
+    <key>StandardOutPath</key>
+    <string>AGENT_LOG_PATH</string>
+
+    <key>StandardErrorPath</key>
+    <string>AGENT_LOG_PATH</string>
+
+    <!-- Minimal environment; install-heart.sh expands the placeholders. -->
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <!-- Homebrew first — launchd default PATH has no pg_dump on Apple Silicon. -->
+        <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+        <key>DATABASE_URL</key>
+        <string>AGENT_DATABASE_URL</string>
+        <key>PYTHONPATH</key>
+        <string>AGENT_REPO_ROOT</string>
+    </dict>
+</dict>
+</plist>

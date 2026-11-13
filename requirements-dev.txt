@@ -1,0 +1,9 @@
+pytest
+pytest-cov
+ruff
+black>=24.10.0
+isort>=5.13.2
+pre-commit
+mypy
+pyright[nodejs]
+langgraph-cli[inmem]>=0.4.26

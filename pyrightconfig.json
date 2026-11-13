@@ -1,0 +1,11 @@
+{
+  "include": ["src"],
+  "exclude": ["venv", ".git"],
+  "pythonVersion": "3.12",
+  "venvPath": ".",
+  "venv": "venv",
+  "typeCheckingMode": "off",
+  "reportMissingImports": "error",
+  "reportUndefinedVariable": "error",
+  "reportUnusedImport": "warning"
+}

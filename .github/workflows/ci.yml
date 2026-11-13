@@ -1,0 +1,39 @@
+# Push / PR gate: lint and .env parity only.
+# No Postgres, no Playwright browsers, no test suite — those need a host, not a runner.
+name: CI
+
+on:
+  push:
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: lint + env-check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install runtime deps and linters
+        run: |
+          python -m pip install -U pip
+          python -m venv venv
+          venv/bin/pip install -q -r requirements.txt
+          venv/bin/pip install -q "ruff==0.17.5" "black==26.10.1" "isort==9.0.2"
+
+      - name: Lint (ruff + black + isort)
+        run: make lint
+
+      - name: Env / .env.example sync
+        run: make env-check

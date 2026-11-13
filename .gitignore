@@ -1,0 +1,81 @@
+# Python
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+.coverage.*
+
+# Secrets & local env
+.env
+.env.*
+!.env.example
+.envrc
+.direnv/
+
+# Crypto / identity exports (make export-identity FILE=…)
+*.pem
+*.key
+identity.json
+*-identity.json
+
+# OS / IDE / editor backup
+.DS_Store
+Thumbs.db
+*.code-workspace
+.cursor/
+.vscode/
+.idea/
+.claude/
+*.orig
+*.rej
+*~
+*.swp
+*.swo
+.ipynb_checkpoints/
+
+# Runtime artifacts & local exports
+.cache/
+.langgraph_api/
+logs/
+tmp/
+*.log
+data/
+backups/
+chats/
+*.sqlite
+*.sqlite3
+*.sqlite-wal
+*.sqlite-shm
+agent_mode.json
+search_cache.sqlite
+*.jsonl
+!tests/fixtures/**/*.jsonl
+*.dump
+*.dump.enc
+*.local
+
+# Memory dumps / archives — never publish
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+phylactery/
+phylactery*
+
+# Local IDE / auxiliary agent prompts (ARCH, WORKER, experiments)
+prompts/_local/*
+!prompts/_local/.gitkeep
+arch-agent_prompt.yml
+worker-agent_prompt.yml
+worker-agent_promt.yml
+
+# Personal backlog (tracked docs: README.md, ARCHITECTURE.md)
+TODO.md

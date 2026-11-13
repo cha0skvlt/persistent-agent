@@ -1,0 +1,14 @@
+{
+  "d01": {"memory_type": "semantic", "age_days": 5},
+  "d02": {"memory_type": "semantic", "age_days": 5},
+  "d03": {"memory_type": "semantic", "age_days": 12},
+  "d04": {"memory_type": "semantic", "age_days": 8},
+  "d05": {"memory_type": "semantic", "age_days": 3},
+  "d06": {"memory_type": "semantic", "age_days": 20},
+  "d07": {"memory_type": "semantic", "age_days": 6},
+  "d08": {"memory_type": "semantic", "age_days": 4},
+  "d09": {"memory_type": "semantic", "age_days": 30},
+  "d10": {"memory_type": "semantic", "age_days": 15},
+  "d11": {"memory_type": "semantic", "age_days": 2},
+  "d12": {"memory_type": "unverified", "age_days": 10}
+}

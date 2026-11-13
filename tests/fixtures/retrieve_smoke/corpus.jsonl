@@ -1,0 +1,12 @@
+{"_id": "d01", "text": "A live turn is one LangGraph pass: update_time, route_turn, retrieve_memory, agent, tools, then reflect."}
+{"_id": "d02", "text": "Memory lives in PostgreSQL with pgvector: 768-dimensional embeddings and an HNSW index over the memories table."}
+{"_id": "d03", "text": "The phylactery is the database holding the agent's identity anchor and memory; a restored dump brings the agent back on any machine."}
+{"_id": "d04", "text": "Retrieval ranks by cosine similarity, drops candidates below the similarity floor, then applies one distrust multiplier for unverified and old rows."}
+{"_id": "d05", "text": "Write hygiene blocks junk at save time: the junk gate, the USER and AGENT label check, and the provenance filter that requires overlap with this turn's tool output."}
+{"_id": "d06", "text": "The reverie loop runs background passes: Pulse intents first, then an optional solitary pass with rotating P1 discover, P2 hygiene, and P3 rhythm lanes."}
+{"_id": "d07", "text": "The loop budget stops a turn on wall clock, on a repeated tool batch, or on a fruitless round; the round cap is only a runaway backstop."}
+{"_id": "d08", "text": "The agent binds twenty-two tools: memory, diary, lessons, knowledge graph, time, web, intents, selftest, and outreach."}
+{"_id": "d09", "text": "Proactive outreach is two stages: message_user enqueues a draft into the outbox, and the Heart process delivers it to Telegram."}
+{"_id": "d10", "text": "Mind Hub records one timeline in mind_events: user input, agent output, solitary passes, and outreach queued or sent."}
+{"_id": "d11", "text": "Causal lessons store a change and a because pair; the top hits are injected as LESSON lines during retrieval."}
+{"_id": "d12", "text": "Web search runs through a local SearXNG on loopback, then ddgs, Playwright, and Wikipedia; fetch_url and browse_web block private addresses."}
