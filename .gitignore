@@ -18,7 +18,6 @@ htmlcov/
 .env.*
 !.env.example
 .envrc
-.direnv/
 
 # Crypto / identity exports (make export-identity FILE=…)
 *.pem
@@ -26,20 +25,11 @@ htmlcov/
 identity.json
 *-identity.json
 
-# OS / IDE / editor backup
+# OS / editor backup
 .DS_Store
-Thumbs.db
-*.code-workspace
-.cursor/
-.vscode/
-.idea/
-.claude/
 *.orig
 *.rej
 *~
-*.swp
-*.swo
-.ipynb_checkpoints/
 
 # Runtime artifacts & local exports
 .cache/
@@ -70,7 +60,7 @@ search_cache.sqlite
 phylactery/
 phylactery*
 
-# Local IDE / auxiliary agent prompts (ARCH, WORKER, experiments)
+# Local auxiliary agent prompts (ARCH, WORKER, experiments)
 prompts/_local/*
 !prompts/_local/.gitkeep
 arch-agent_prompt.yml
