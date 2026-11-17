@@ -372,7 +372,7 @@ def test_reflect_node_passes_good_facts(monkeypatch):
 
     good_facts = [
         "the user lives in Lisbon and works on the persistent-agent project every day",
-        "User often chooses dark mode within the IDE during long evening coding sessions",
+        "User often chooses dark mode within the AOE during long evening coding sessions",
         "Primary development stack remains Rust and Python across backend services",
     ]
 
@@ -395,7 +395,7 @@ def test_reflect_node_passes_good_facts(monkeypatch):
             HumanMessage(
                 content=(
                     "I live in Lisbon and work on the persistent-agent project every day; "
-                    "often choose dark mode within the IDE during long evening coding sessions; "
+                    "often choose dark mode within the AOE during long evening coding sessions; "
                     "primary development stack remains Rust and Python across backend services"
                 )
             ),

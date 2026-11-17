@@ -30,7 +30,6 @@ identity.json
 *.orig
 *.rej
 *~
-
 # Runtime artifacts & local exports
 .cache/
 .langgraph_api/
